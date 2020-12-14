@@ -16,7 +16,10 @@ class AddComment extends Component {
         }
 
         axios.post("/postComment", data).then(response => {
-            console.log(response);
+            if(response.data == "OK")
+            {
+                this.props.addCommentHandler(this.props.loggedUser.login, this.state.text);
+            }
         });
     }
 

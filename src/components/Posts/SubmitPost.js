@@ -56,7 +56,10 @@ class SubmitPost extends Component {
         else
         return (
             <div className="Post">
-                <NavLink to={'/post/' + this.props.post.id}>Tytuł: {this.props.post.title}</NavLink>
+                <NavLink to={{
+                    pathname: '/post',
+                    state: {post: this.props.post, loggedUser: this.props.loggedUser}
+                }}>Tytuł: {this.props.post.title}</NavLink>
                 <img src={this.props.post.pictureUrl}></img>
                 <p id="price">Cena: {this.props.post.newPrice} </p><p id="oldprice">{this.props.post.oldPrice}</p>
                 <p>Opis:</p>

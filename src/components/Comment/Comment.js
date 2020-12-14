@@ -6,9 +6,9 @@ class Comment extends Component {
     render() {
         return (
             <div className="Comment">
-                <p id="user">{this.props.comment.username}</p>
+                <p id="user">{this.props.comment.login}</p>
                 <br/>
-                <p id="price">{this.props.comment.text}</p>
+                <p id="price">{this.props.comment.content}</p>
             </div>
         );
     }

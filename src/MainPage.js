@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink} from 'react-router-dom'
 
-import postList from './components/Posts/postList'
+import PostList from './components/Posts/postList'
 import Login from './components/Login/Login'
 import AddOffer from './components/AddOffer/AddOffer';
 import Register from './components/Register/Register';
@@ -43,11 +43,11 @@ class MainPage extends Component {
                         {this.state.loggedUser? <a href="#" onClick={this.logoutHandler}>Wyloguj</a> : ""}
                     </ul>
                 </header>
-                <Route path="/" exact component={postList} />
+                <Route path="/" exact component={() => <PostList loggedUser={this.state.loggedUser}/>} />
                 <Route path="/login" component={() => <Login loginUserHandler={this.loginUserHandler} loggedUser={this.state.loggedUser}/>} />
                 <Route path="/register" component={Register} />
                 <Route path="/addoffer" component={() => <AddOffer loggedUser={this.state.loggedUser}/>} />
-                <Route path="/post/:id" component={(props) => <FullPost loggedUser={this.state.loggedUser} props={..props}/>} />
+                <Route path="/post" component={FullPost} />
                 {/* <Route path="/post/:id" component={() => <AddComment loggedUser={this.state.loggedUser}/>} />
                 <Route path="/post/:id" component={CommentList} /> */}
                 <Route path="/submitlist" component={() => <SubmitList loggedUser={this.state.loggedUser}/>} />

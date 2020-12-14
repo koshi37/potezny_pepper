@@ -19,7 +19,7 @@ class postList extends Component {
     }
 
     render() {
-        var posts = this.state.posts.map(post => <Post post={post}/>);
+        var posts = this.state.posts.map(post => <Post loggedUser={this.props.loggedUser} post={post}/>);
         console.log(this.state.posts)
         return (
             <div className="PostList">
