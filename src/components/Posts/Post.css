@@ -1,0 +1,22 @@
+#price {
+    display: inline;
+}
+
+#oldprice {
+    text-decoration: line-through;
+    color: gray;
+    display: inline;
+}
+
+button {
+    float: right;
+}
+
+.Post {
+    border: 1px solid black;
+    min-height: 100px;
+}
+
+.Post img {
+    width: 100px;
+}
