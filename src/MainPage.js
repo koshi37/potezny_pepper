@@ -16,8 +16,19 @@ class MainPage extends Component {
         loggedUser: ""
     }
 
+    componentDidMount() {
+        if(!this.state.loggedUser)
+        {
+            const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+            if (loggedInUser) {
+                this.setState({loggedUser: loggedInUser});
+            }
+        }
+    }
+
     logoutHandler = () => {
         this.setState({loggedUser: null});
+        sessionStorage.clear();
     }
 
     loginUserHandler = (user) => {

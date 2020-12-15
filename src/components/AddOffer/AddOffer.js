@@ -19,8 +19,9 @@ class AddOffer extends Component {
             login: this.props.loggedUser.login,
             password: this.props.loggedUser.password,
             post: {
-                tile: this.state.title,
+                title: this.state.title,
                 content: this.state.content,
+                link: this.state.link,
                 pictureUrl: this.state.pictureUrl,
                 oldPrice: this.state.oldPrice,
                 newPrice: this.state.newPrice,
@@ -50,6 +51,8 @@ class AddOffer extends Component {
                 <input id="price" type="number" step="0.01" value={this.state.oldPrice} onChange={(event) => this.setState({oldPrice: event.target.value})} /><br/>
                 <label>Link do zdjęcia</label>
                 <input id="link" type="text" value={this.state.pictureUrl} onChange={(event) => this.setState({pictureUrl: event.target.value})} /><br/>
+                <label>Link do oferty</label>
+                <input id="link" type="text" value={this.state.link} onChange={(event) => this.setState({link: event.target.value})} /><br/>
                 <label>Opis</label>
                 <input id="content" type="text" value={this.state.content} onChange={(event) => this.setState({content: event.target.value})} /><br/>
                 <button style={{float: 'left'}} onClick = {this.postDataHandler}>Dodaj</button>

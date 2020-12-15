@@ -28,6 +28,7 @@ class Login extends Component {
             login: this.state.login,
             password: this.state.password
         }
+        if(!sessionStorage.getItem("user"))
         axios.post('/login', user).then(response => {
             if(response.data == 'NOT_FOUND')
             {
@@ -37,6 +38,7 @@ class Login extends Component {
             {
                 this.props.loginUserHandler(response.data);
                 this.setState({logged: true});
+                sessionStorage.setItem('user', JSON.stringify(response.data));
             }
         })
     }

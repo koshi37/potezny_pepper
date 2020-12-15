@@ -6,7 +6,8 @@ import axios from 'axios';
 class Post extends Component {
     
     state = {
-        vote: 0
+        vote: 0,
+        percent: 0
     }
 
     componentDidMount() {
@@ -17,6 +18,10 @@ class Post extends Component {
             vote += this.props.post.userVotes[i].vote;
         }
         this.setState({vote: vote});
+
+        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+        percent = Math.floor(percent);
+        this.setState({percent: -percent});
     }
 
     voteupHandler = () => {
@@ -49,6 +54,12 @@ class Post extends Component {
         });
     }
 
+    // var calcPercent {
+    //     var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+    //     console.log(percent)
+    //     return percent;
+    // }
+
     render() {
         return (
             <div className="Post">
@@ -62,6 +73,7 @@ class Post extends Component {
                 <p>Ocena: {this.state.vote}</p>
                 <br/>
                 <p id="price">Cena: {this.props.post.newPrice} </p><p id="oldprice">{this.props.post.oldPrice}</p>
+                {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p>:<p id="highpercent"> (+ {this.state.percent} %)</p>}
             </div>
         );
     }

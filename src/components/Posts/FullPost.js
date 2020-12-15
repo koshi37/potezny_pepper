@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddComment from '../Comment/AddComment';
 import CommentList from '../Comment/CommentList';
 import axios from 'axios';
+import './FullPost';
 
 class FullPost extends Component {
 
@@ -9,7 +10,8 @@ class FullPost extends Component {
     state = {
       post: null,
       loggedUser: null,
-      vote: 0
+      vote: 0,
+      percent: 0
       }
 
     componentDidMount() {
@@ -25,6 +27,10 @@ class FullPost extends Component {
             vote += this.props.location.state.post.userVotes[i].vote;
         }
         this.setState({vote: vote});
+
+        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+        percent = Math.floor(percent);
+        this.setState({percent: -percent});
     }
 
     voteupHandler = () => {
@@ -64,10 +70,12 @@ class FullPost extends Component {
             <div>
                 <div>
                     <p>Tytuł: {this.state.post.title}</p>
+                    <img src={this.state.post.pictureUrl}/>
                     {this.state.loggedUser ? <button onClick={this.voteupHandler}>+</button>:""}
                     {this.state.loggedUser ? <button onClick={this.votedownHandler}>-</button>:""}
                     <p>Ocena: {this.state.vote}</p>
                     <p id="price">Cena: {this.state.post.newPrice} </p><p id="oldprice">{this.state.post.oldPrice}</p>
+                    {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p>:<p id="highpercent"> (+ {this.state.percent} %)</p>}
                     <p>{this.state.post.date}</p>
                     <br/>
                     <a href={this.state.post.link}>Link</a>

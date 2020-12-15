@@ -7,7 +7,14 @@ class SubmitPost extends Component {
 
     state = {
         accepted: false,
-        deleted: false
+        deleted: false,
+        percent: 0
+    }
+
+    componentDidMount() {
+        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+        percent = Math.floor(percent);
+        this.setState({percent: -percent});
     }
 
     acceptHandler = () => {
@@ -62,6 +69,7 @@ class SubmitPost extends Component {
                 }}>Tytuł: {this.props.post.title}</NavLink>
                 <img src={this.props.post.pictureUrl}></img>
                 <p id="price">Cena: {this.props.post.newPrice} </p><p id="oldprice">{this.props.post.oldPrice}</p>
+                {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p>:<p id="highpercent"> (+ {this.state.percent} %)</p>}
                 <p>Opis:</p>
                 <p>{this.props.post.content}</p>
                 <button onClick={this.acceptHandler}>Zaakceptuj</button>

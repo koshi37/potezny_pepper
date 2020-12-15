@@ -8,6 +8,14 @@
     display: inline;
 }
 
+#lowpercent {
+    color: rgb(45, 209, 45);
+}
+
+#highpercent {
+    color: red;
+}
+
 button {
     float: right;
 }
