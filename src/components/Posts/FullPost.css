@@ -1,7 +1,24 @@
 #lowpercent {
-    color: rgb(45, 209, 45);
+  color: rgb(45, 209, 45);
 }
 
 #highpercent {
-    color: red;
+  color: red;
+}
+
+#user-actions {
+  background-color: red;
+  width: 100%;
+  margin: 1%;
+  padding: 1%;
+}
+
+.img-container {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.full-post-container {
+  background-color: red;
 }
