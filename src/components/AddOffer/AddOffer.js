@@ -10,7 +10,8 @@ class AddOffer extends Component {
         link: "",
         pictureUrl: "",
         content: "",
-        date: "1970-01-01T00:37:12.122+00:00",
+        startDate: "",
+        endDate: "",
         added: false
     }
 
@@ -25,7 +26,8 @@ class AddOffer extends Component {
                 pictureUrl: this.state.pictureUrl,
                 oldPrice: this.state.oldPrice,
                 newPrice: this.state.newPrice,
-                date: this.state.date
+                startDate: this.state.startDate,
+                endDate: this.state.endDate
             }
         }
         console.log("data",data);
@@ -51,6 +53,10 @@ class AddOffer extends Component {
                 <input id="price" type="number" step="0.01" value={this.state.oldPrice} onChange={(event) => this.setState({oldPrice: event.target.value})} /><br/>
                 <label>Link do zdjęcia</label>
                 <input id="link" type="text" value={this.state.pictureUrl} onChange={(event) => this.setState({pictureUrl: event.target.value})} /><br/>
+                <label>Data rozpoczecia</label>
+                <input type="text" value={this.state.startDate} onChange={(event) => this.setState({startDate: event.target.value})} /><br/>
+                <label>Data Zakończenia</label>
+                <input type="text" value={this.state.endDate} onChange={(event) => this.setState({endDate: event.target.value})} /><br/>
                 <label>Link do oferty</label>
                 <input id="link" type="text" value={this.state.link} onChange={(event) => this.setState({link: event.target.value})} /><br/>
                 <label>Opis</label>

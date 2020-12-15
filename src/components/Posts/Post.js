@@ -19,9 +19,12 @@ class Post extends Component {
         }
         this.setState({vote: vote});
 
-        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
-        percent = Math.floor(percent);
-        this.setState({percent: -percent});
+        if(this.props.post && this.props.post.newPrice && this.props.post.oldPrice)
+        {
+            var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+            percent = Math.floor(percent);
+            this.setState({percent: -percent});
+        }
     }
 
     voteupHandler = () => {

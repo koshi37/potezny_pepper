@@ -3,6 +3,8 @@ import AddComment from '../Comment/AddComment';
 import CommentList from '../Comment/CommentList';
 import axios from 'axios';
 import './FullPost';
+import moment from 'moment';
+import localization from 'moment/locale/pl';
 
 class FullPost extends Component {
 
@@ -28,9 +30,12 @@ class FullPost extends Component {
         }
         this.setState({vote: vote});
 
-        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
-        percent = Math.floor(percent);
-        this.setState({percent: -percent});
+        if(this.props.post && this.props.post.newPrice && this.props.post.oldPrice)
+        {
+            var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+            percent = Math.floor(percent);
+            this.setState({percent: -percent});
+        }
     }
 
     voteupHandler = () => {
@@ -64,7 +69,7 @@ class FullPost extends Component {
     }
 
     render() {
-        
+        moment.updateLocale('pl', localization);
         if(this.state.post)
         return (
             <div>
@@ -76,7 +81,8 @@ class FullPost extends Component {
                     <p>Ocena: {this.state.vote}</p>
                     <p id="price">Cena: {this.state.post.newPrice} </p><p id="oldprice">{this.state.post.oldPrice}</p>
                     {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p>:<p id="highpercent"> (+ {this.state.percent} %)</p>}
-                    <p>{this.state.post.date}</p>
+                    <p>Początek: {moment(this.state.post.endDate).format('LL')}</p>
+                    <p>Koniec: {moment(this.state.post.startDate).format('LL')}</p>
                     <br/>
                     <a href={this.state.post.link}>Link</a>
                 </div>

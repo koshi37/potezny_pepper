@@ -20,6 +20,7 @@ class postList extends Component {
 
     render() {
         var posts = this.state.posts.map(post => <Post loggedUser={this.props.loggedUser} post={post}/>);
+        if(posts == "") posts = <p>Nie udało się wczytać postów</p>
         console.log(this.state.posts)
         return (
             <div className="PostList">

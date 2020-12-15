@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Post.css';
 import axios from 'axios';
+import moment from 'moment';
+import localization from 'moment/locale/pl';
 
 class SubmitPost extends Component {
 
@@ -12,9 +14,13 @@ class SubmitPost extends Component {
     }
 
     componentDidMount() {
-        var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
-        percent = Math.floor(percent);
-        this.setState({percent: -percent});
+        moment.updateLocale('pl', localization);
+        if(this.props.post && this.props.post.newPrice && this.props.post.oldPrice)
+        {
+            var percent = 100 - (this.props.post.newPrice*100)/this.props.post.oldPrice;
+            percent = Math.floor(percent);
+            this.setState({percent: -percent});
+        }
     }
 
     acceptHandler = () => {
@@ -60,7 +66,7 @@ class SubmitPost extends Component {
                 <p>Post został dodany</p>
             </div>
         )
-        else
+        else if(this.props.post)
         return (
             <div className="Post">
                 <NavLink to={{
@@ -72,6 +78,8 @@ class SubmitPost extends Component {
                 {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p>:<p id="highpercent"> (+ {this.state.percent} %)</p>}
                 <p>Opis:</p>
                 <p>{this.props.post.content}</p>
+                <p>Początek: {moment(this.props.post.endDate).format('LL')}</p>
+                <p>Koniec: {moment(this.props.post.startDate).format('LL')}</p>
                 <button onClick={this.acceptHandler}>Zaakceptuj</button>
                 <button onClick={this.deleteHandler}>Usuń</button>
                 <br/>
