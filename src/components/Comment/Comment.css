@@ -1,8 +1,19 @@
 .Comment {
-    border: 1px solid black;
-    width: 300px;
+  border: 1px solid black;
+  width: 90%;
+  margin: 1%;
+  padding: 1%;
+  border-radius: 5%;
+  text-align: left;
 }
 
 p#user {
-    font-size: small;
+  font-size: x-small;
+  float: right;
+}
+
+.input-comment {
+  width: 80%;
+  background-color: rgb(238, 238, 238);
+  border-radius: 5%;
 }

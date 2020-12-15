@@ -16,28 +16,26 @@ class AddComment extends Component {
         }
 
         axios.post("/postComment", data).then(response => {
-            if(response.data == "OK")
-            {
+            if (response.data == "OK") {
                 this.props.addCommentHandler(this.props.loggedUser.login, this.state.text);
             }
         });
     }
 
     render() {
-        if(this.props.loggedUser)
-        return (
-            <div>
-                <label>Treść komentarza</label>
-                <input value={this.state.text} onChange={(event) => this.setState({text: event.target.value})}></input>
-                <button onClick={this.addCommentHandler}>Dodaj komentarz</button>
-            </div>
-        );
+        if (this.props.loggedUser)
+            return (
+                <div>
+                    <input className="input-comment" placeholder="Treść komentarz" value={this.state.text} onChange={(event) => this.setState({ text: event.target.value })}></input>
+                    <button class="form-btn" onClick={this.addCommentHandler}>Dodaj komentarz</button>
+                </div>
+            );
         else
-        return (
-            <div>
-                <p>Żeby dodać komentarz musisz się zalogować</p>
-            </div>
-        )
+            return (
+                <div>
+                    <p>Żeby dodać komentarz musisz się zalogować</p>
+                </div>
+            )
     }
 }
 

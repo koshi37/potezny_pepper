@@ -1,0 +1,19 @@
+.form-container {
+  text-align: center;
+  font-size: large;
+  justify-content: center;
+}
+
+input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.form-btn {
+  padding: 12px 20px;
+  float: left;
+  text-align: center;
+  display: inline-block;
+  margin-left: 47%;
+}
