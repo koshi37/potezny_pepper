@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './AddOffer.css';
+import DatePicker from 'react-date-picker'
 
 class AddOffer extends Component {
 
@@ -49,8 +50,10 @@ class AddOffer extends Component {
                     <input id="price" type="number" step="0.01" value={this.state.newPrice} onChange={(event) => this.setState({ newPrice: event.target.value })} placeholder="Nowa cena" /><br />
                     <input id="price" type="number" step="0.01" value={this.state.oldPrice} onChange={(event) => this.setState({ oldPrice: event.target.value })} placeholder="Stara cena" /><br />
                     <input id="link" type="text" value={this.state.pictureUrl} onChange={(event) => this.setState({ pictureUrl: event.target.value })} placeholder="Link do zdjęcia" /><br />
-                    <input type="text" value={this.state.startDate} onChange={(event) => this.setState({ startDate: event.target.value })} placeholder="Data rozpoczęcia" /><br />
-                    <input type="text" value={this.state.endDate} onChange={(event) => this.setState({ endDate: event.target.value })} placeholder="Data zakończenia" /><br />
+                    <p>Data rozpoczęcia</p>
+                    <DatePicker className="date" value={this.state.startDate} onChange={date => this.setState({startDate: date})} /><br/>
+                    <p>Data zakończenia</p>
+                    <DatePicker className="date" value={this.state.endDate} onChange={date => this.setState({endDate: date})}/><br/>
                     <input id="link" type="text" value={this.state.link} onChange={(event) => this.setState({ link: event.target.value })} placeholder="Link do oferty" /><br />
                     <input id="content" type="text" value={this.state.content} onChange={(event) => this.setState({ content: event.target.value })} placeholder="Opis" /><br />
                     <button class="form-btn" onClick={this.postDataHandler}>Dodaj</button>

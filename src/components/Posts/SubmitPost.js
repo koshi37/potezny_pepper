@@ -53,7 +53,7 @@ class SubmitPost extends Component {
     render() {
         if (this.state.deleted)
             return (
-                <div className="post-action-information">
+                <div className="del-action-information">
                     <h2>Post został usunięty</h2>
                 </div>
             )
@@ -75,8 +75,8 @@ class SubmitPost extends Component {
                     {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p> : <p id="highpercent"> (+ {this.state.percent} %)</p>}
                     <p>Opis:</p>
                     <p>{this.props.post.content}</p>
-                    <p>Początek: {moment(this.props.post.endDate).format('LL')}</p>
-                    <p>Koniec: {moment(this.props.post.startDate).format('LL')}</p>
+                    <p>Początek: { this.props.post.startDate ? moment(this.props.post.startDate).format('LL') : "[brak informacji]"}</p>
+                    <p>Koniec: { this.props.post.startDate ? moment(this.props.post.endDate).format('LL') : "[brak informacji]"}</p>
                     <button onClick={this.acceptHandler}>Zaakceptuj</button>
                     <button onClick={this.deleteHandler}>Usuń</button>
                     <br />

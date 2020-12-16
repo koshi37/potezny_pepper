@@ -13,7 +13,8 @@ class FullPost extends Component {
         post: null,
         loggedUser: null,
         vote: 0,
-        percent: 0
+        percent: 0,
+        deleted: false
     }
 
     componentDidMount() {
@@ -66,19 +67,40 @@ class FullPost extends Component {
         });
     }
 
+    deleteHandler = () => {
+        var data = {
+            login: this.state.loggedUser.login,
+            password: this.state.loggedUser.password,
+            id: this.state.post.id
+        }
+        axios.post("/deletePost", data).then(response => {
+            console.log(response);
+            if (response.data == "OK") {
+                this.setState({deleted: true});
+            }
+        })
+    }
+
     render() {
         moment.updateLocale('pl', localization);
-        if (this.state.post)
+        if(this.state.deleted)
+            return (
+                <div class="full-post-container">
+                    <p>Post został usunięty</p>
+                </div>
+            );
+        else if (this.state.post)
             return (
                 <div class="full-post-container">
                     <div>
+                        { this.state.loggedUser && this.state.loggedUser.role === 'admin' ? <button className="del-btn" onClick={this.deleteHandler}>Usuń post</button> : "" }
                         <h1>Tytuł: {this.state.post.title}</h1>
                         <a href={this.state.post.link}><h4>--LINK DO OFERTY--</h4></a>
                         <div><img class="img-container" src={this.state.post.pictureUrl} /></div>
 
                         <div class="all-info-container">
-                            <div class="date-info">                        <p>Początek: {moment(this.state.post.endDate).format('LL')}</p>
-                                <p>Koniec: {moment(this.state.post.startDate).format('LL')}</p></div>
+                            <div class="date-info">                        <p>Początek: { this.state.post.startDate ? moment(this.state.post.startDate).format('LL') : "[brak informacji]"}</p>
+                                <p>Koniec: { this.state.post.endDate ? moment(this.state.post.endDate).format('LL') : "[brak informacji]"}</p></div>
                             <div class="fullpost-user-actions">
                                 {this.state.loggedUser ? <button onClick={this.voteupHandler}>+</button> : ""}
                                 {this.state.loggedUser ? <button onClick={this.votedownHandler}>-</button> : ""}

@@ -56,7 +56,7 @@ class Login extends Component {
             );
         else
             return (
-                <div>
+                <div class="form-container">
                     <p>Jesteś zalogowany jako {this.props.loggedUser.login}</p>
                     <NavLink to="/">Przejdź do strony głównej</NavLink>
                 </div>

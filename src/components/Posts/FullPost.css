@@ -22,3 +22,11 @@
 .full-post-container {
   background-color: red;
 }
+
+.del-btn {
+  padding: 12px 20px;
+  float: right;
+  text-align: center;
+  display: inline-block;
+  margin-left: 47%;
+}
