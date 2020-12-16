@@ -73,10 +73,12 @@ class SubmitPost extends Component {
                         state: { post: this.props.post, loggedUser: this.props.loggedUser }
                     }}>Tytuł: {this.props.post.title}</NavLink>
                     <img src={this.props.post.pictureUrl}></img>
+                    { this.props.post.endDate && moment().isBefore(this.props.post.endDate) ? <h1 id="post-notstarted">Okazja aktualna</h1> :
+                        this.props.post.endDate && moment().isAfter(this.props.post.endDate) ? <h1 id="post-ended">Okazja zakończona</h1> : <h1 id="post-noinfo">Brak daty zakończenia</h1>}
                     <p id="price">Cena: {this.props.post.newPrice} </p><p id="oldprice">{this.props.post.oldPrice}</p>
                     {this.state.percent < 0 ? <p id="lowpercent"> ({this.state.percent} %)</p> : <p id="highpercent"> (+ {this.state.percent} %)</p>}
-                    <p>Opis:</p>
-                    <p>{this.props.post.content}</p>
+                    {/* <p>Opis:</p>
+                    <p>{this.props.post.content}</p> zajmuje za dużo miejsca*/}
                     <p>Początek: { this.props.post.startDate ? moment(this.props.post.startDate).format('LL') : "[brak informacji]"}</p>
                     <p>Koniec: { this.props.post.endDate ? moment(this.props.post.endDate).format('LL') : "[brak informacji]"}</p>
                     <button onClick={this.acceptHandler}>Zaakceptuj</button>

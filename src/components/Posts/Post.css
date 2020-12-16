@@ -118,8 +118,10 @@ button {
 
 .comments-container {
   margin: 1%;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(247, 245, 245);
   padding: 2%;
+  border-radius: 10px;
+  border: 1px solid rgb(233, 233, 233);
 }
 
 .img-container {
@@ -129,11 +131,51 @@ button {
   padding: 15px;
 }
 
-#ended {
+#post-ended {
   border: 2px solid red;
   border-radius: 5px;
   padding: 3px;
   width: max-content;
   background-color: rgb(230, 137, 137);
   color: white;
+  font-size: small;
+}
+
+#post-notstarted {
+  border: 2px solid rgb(75, 206, 0);
+  border-radius: 5px;
+  padding: 3px;
+  width: max-content;
+  background-color: rgb(111, 233, 117);
+  color: white;
+  font-size: small;
+}
+
+#post-noinfo {
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 3px;
+  width: max-content;
+  background-color: rgb(204, 204, 204);
+  font-size: small;
+}
+
+.desc {
+  margin: 1%;
+  background-color: rgb(247, 245, 245);
+  padding: 2%;
+  border-radius: 10px;
+  border: 1px solid rgb(233, 233, 233);
+}
+
+.desc h3 {
+  float: left;
+  margin-top: 0px;
+}
+
+.desc p {
+  font-size: 16px;
+  color: rgb(80, 80, 80);
+  word-wrap: break-word;
+  margin: 40px 10px 10px 10px;
 }

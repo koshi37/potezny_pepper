@@ -70,7 +70,8 @@ class Post extends Component {
                     pathname: '/post',
                     state: { post: this.props.post, loggedUser: this.props.loggedUser }
                 }}>Tytuł: {this.props.post.title}</NavLink>
-                { this.props.post.endDate && moment().isAfter(this.props.post.endDate) ? <p id="ended">Okazja zakończona</p> : ""}
+                { this.props.post.endDate && moment().isBefore(this.props.post.endDate) ? <h1 id="post-notstarted">Okazja aktualna</h1> :
+                        this.props.post.endDate && moment().isAfter(this.props.post.endDate) ? <h1 id="post-ended">Okazja zakończona</h1> : <h1 id="post-noinfo">Brak daty zakończenia</h1>}
                 <div class="user-actions">
                     {this.props.loggedUser ? <button onClick={this.voteupHandler}>+</button> : ""}
                     {this.props.loggedUser ? <button onClick={this.votedownHandler}>-</button> : ""}

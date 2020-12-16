@@ -27,6 +27,7 @@ class CommentList extends Component {
         return (
             <div className="CommentList">
                 {this.props.loggedUser ? <AddComment addCommentHandler={this.addCommentHandler} loggedUser={this.props.loggedUser} post={this.props.post} /> : ""}
+                <br/><br/>
                 {comments}
             </div>
         );

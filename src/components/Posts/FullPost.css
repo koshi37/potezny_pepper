@@ -7,7 +7,7 @@
 }
 
 #user-actions {
-  background-color: red;
+  /* background-color: red; */
   width: 100%;
   margin: 1%;
   padding: 1%;
@@ -16,11 +16,11 @@
 .img-container {
   width: 100px;
   height: 100px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .full-post-container {
-  background-color: red;
+  /* background-color: red; */
 }
 
 .del-btn {

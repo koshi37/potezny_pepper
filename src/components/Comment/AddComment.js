@@ -14,7 +14,8 @@ class AddComment extends Component {
             content: this.state.text,
             postId: this.props.post.id
         }
-
+        
+        if(this.state.content)
         axios.post("/postComment", data).then(response => {
             if (response.data == "OK") {
                 this.props.addCommentHandler(this.props.loggedUser.login, this.state.text);
