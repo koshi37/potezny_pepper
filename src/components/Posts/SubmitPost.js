@@ -10,7 +10,8 @@ class SubmitPost extends Component {
     state = {
         accepted: false,
         deleted: false,
-        percent: 0
+        percent: 0,
+        currDate: new Date()
     }
 
     componentDidMount() {
@@ -51,6 +52,7 @@ class SubmitPost extends Component {
     }
 
     render() {
+        var now = moment();
         if (this.state.deleted)
             return (
                 <div className="del-action-information">
@@ -76,7 +78,7 @@ class SubmitPost extends Component {
                     <p>Opis:</p>
                     <p>{this.props.post.content}</p>
                     <p>Początek: { this.props.post.startDate ? moment(this.props.post.startDate).format('LL') : "[brak informacji]"}</p>
-                    <p>Koniec: { this.props.post.startDate ? moment(this.props.post.endDate).format('LL') : "[brak informacji]"}</p>
+                    <p>Koniec: { this.props.post.endDate ? moment(this.props.post.endDate).format('LL') : "[brak informacji]"}</p>
                     <button onClick={this.acceptHandler}>Zaakceptuj</button>
                     <button onClick={this.deleteHandler}>Usuń</button>
                     <br />

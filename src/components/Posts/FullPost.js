@@ -95,6 +95,8 @@ class FullPost extends Component {
                     <div>
                         { this.state.loggedUser && this.state.loggedUser.role === 'admin' ? <button className="del-btn" onClick={this.deleteHandler}>Usuń post</button> : "" }
                         <h1>Tytuł: {this.state.post.title}</h1>
+                        {   this.state.post.startDate && moment().isBefore(this.state.post.startDate) ? <h1 id="notstarted">Okazja jeszcze się nie zaczęła</h1> :
+                        this.state.post.endDate && moment().isAfter(this.state.post.endDate) ? <h1 id="ended">Okazja zakończona</h1> : ""}
                         <a href={this.state.post.link}><h4>--LINK DO OFERTY--</h4></a>
                         <div><img class="img-container" src={this.state.post.pictureUrl} /></div>
 
@@ -115,7 +117,11 @@ class FullPost extends Component {
 
                         </div>
                         <br />
+                        <div>
+                            <h3>Opis</h3>
+                            <p>{this.state.post.content ? this.state.post.content : "Brak opisu"}</p>
 
+                        </div>
 
                     </div>
                     <div class="comments-container">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Post.css';
 import axios from 'axios';
+import moment from 'moment';
 
 class Post extends Component {
 
@@ -69,6 +70,7 @@ class Post extends Component {
                     pathname: '/post',
                     state: { post: this.props.post, loggedUser: this.props.loggedUser }
                 }}>Tytuł: {this.props.post.title}</NavLink>
+                { this.props.post.endDate && moment().isAfter(this.props.post.endDate) ? <p id="ended">Okazja zakończona</p> : ""}
                 <div class="user-actions">
                     {this.props.loggedUser ? <button onClick={this.voteupHandler}>+</button> : ""}
                     {this.props.loggedUser ? <button onClick={this.votedownHandler}>-</button> : ""}

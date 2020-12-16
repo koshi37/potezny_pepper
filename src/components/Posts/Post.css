@@ -128,3 +128,12 @@ button {
   text-align: center;
   padding: 15px;
 }
+
+#ended {
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 3px;
+  width: max-content;
+  background-color: rgb(230, 137, 137);
+  color: white;
+}

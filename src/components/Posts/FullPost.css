@@ -30,3 +30,25 @@
   display: inline-block;
   margin-left: 47%;
 }
+
+#ended {
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 3px;
+  width: max-content;
+  background-color: rgb(230, 137, 137);
+  color: white;
+  font-size: 20px;
+  margin: 0 auto 0 auto;
+}
+
+#notstarted {
+  border: 2px solid rgb(75, 206, 0);
+  border-radius: 5px;
+  padding: 3px;
+  width: max-content;
+  background-color: rgb(111, 233, 117);
+  color: white;
+  font-size: 20px;
+  margin: 0 auto 0 auto;
+}
