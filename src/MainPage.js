@@ -9,6 +9,7 @@ import FullPost from './components/Posts/FullPost';
 import CommentList from './components/Comment/CommentList';
 import SubmitList from './components/Posts/SubmitList';
 import AddComment from './components/Comment/AddComment';
+import AdminPanel from './components/AdminPanel/AdminPanel';
 
 class MainPage extends Component {
 
@@ -50,6 +51,7 @@ class MainPage extends Component {
                         {!this.state.loggedUser? <li><NavLink to="/register">Rejestracja</NavLink></li> : ""}
                         {this.state.loggedUser? <li><NavLink to="/addoffer">Dodaj ofertę</NavLink></li> : ""}
                         {this.state.loggedUser && (this.state.loggedUser.role == "admin" || this.state.loggedUser.role == "mod") ? <li><NavLink to="/submitlist">Do zweryfikowania</NavLink></li> : ""}
+                        {this.state.loggedUser && this.state.loggedUser.role == "admin" ? <li><NavLink to="/adminpanel">Panel admina</NavLink></li> : ""}
                         {this.state.loggedUser? <li>Użytkownik: {this.state.loggedUser.login}</li> : ""}
                         {this.state.loggedUser? <a href="#" onClick={this.logoutHandler}>Wyloguj</a> : ""}
                     </ul>
@@ -62,6 +64,7 @@ class MainPage extends Component {
                 {/* <Route path="/post/:id" component={() => <AddComment loggedUser={this.state.loggedUser}/>} />
                 <Route path="/post/:id" component={CommentList} /> */}
                 <Route path="/submitlist" component={() => <SubmitList loggedUser={this.state.loggedUser}/>} />
+                <Route path="/adminpanel" component={() => <AdminPanel loggedUser={this.state.loggedUser}/>} />
             </div>
         );
     }

@@ -15,7 +15,6 @@ class SubmitList extends Component {
             password: this.props.loggedUser.password,
         }
         axios.post("/getNotAcceptedPosts", user).then(response => {
-            console.log(response.data);
             this.setState({posts: response.data});
         });
     }
@@ -30,12 +29,22 @@ class SubmitList extends Component {
     }
 
     render() {
-        var posts = <p>Nie masz odpowiednich uprawnień</p>
+        var posts = <p>Nie masz odpowiednich uprawnień</p>;
         if(this.props.loggedUser && (this.props.loggedUser.role == "admin" || this.props.loggedUser.role == "mod"))
-        var posts = this.state.posts.map(post => <SubmitPost loggedUser={this.props.loggedUser} post={post} deleteHandler={this.deleteHandler} />);
+        {
+            if(this.state.posts)
+            {
+                posts = this.state.posts.map(post => {
+                    return <SubmitPost loggedUser={this.props.loggedUser} post={post} deleteHandler={this.deleteHandler} />
+                });
+            }
+            else
+            {
+                posts = <p>Brak postów to zaakceptowania.</p>
+            }
+        }
         return (
             <div className="PostList">
-                {posts.length == 0 ? <p>Brak postów to zaakceptowania.</p>:""}
                 {posts}
             </div>
         );
