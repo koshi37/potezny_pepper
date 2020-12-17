@@ -22,7 +22,7 @@ class AdminPanel extends Component {
         if(this.props.loggedUser && this.props.loggedUser.role == "admin" && this.state.users)
         {
             users = this.state.users.map( user => {
-                return <AdminPanelUser user={user}/>
+                return <AdminPanelUser user={user} loggedUser={this.props.loggedUser}/>
             });
                 return (
                     <div className="AdminPanel">

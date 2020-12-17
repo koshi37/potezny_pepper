@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class AdminPanelUser extends Component {
 
@@ -13,10 +14,24 @@ class AdminPanelUser extends Component {
     }
 
     deleteUser = () => {
+        var data = {
+            login: this.props.loggedUser.login,
+            password: this.props.loggedUser.password,
+            userToDelete: this.state.user.login
+        }
+        axios.post('/deleteUser', data);
         this.setState({deleted: true});
     }
 
     changeRoleHandler = () => {
+        var data = {
+            login: this.props.loggedUser.login,
+            password: this.props.loggedUser.password,
+            newRole: this.state.role,
+            userNewRole: this.state.user.login
+        }
+
+        axios.post("/setRole", data);
         var user = this.state.user;
         user.role = this.state.role;
         this.setState({user: user});
